@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script>
+    function descarga()
+{
+    var desde = document.querySelector("#desde").value
+    var hasta = document.querySelector("#hasta").value
+    var principio = 'https://www.nadiemellamagallina.com/pdfmanual.php?id='
+    var links = [];
+    for (let step = desde; step <= hasta; step++) 
+    {
+    console.log(principio+step.toString());
+    links.push(principio+step.toString())
+    }
+    for(let i = 0; i < links.length; i++) {
+      var frame = document.createElement("iframe");
+      frame.src = links[i];
+      frame["download"] = 1
+      document.body.appendChild(frame);
+    }
+}
+</script>
+    <style>
+        iframe{display: none;}
+    </style>
+</head>
+<body>
+    <div>
+    <label for="desde">Desde: </label><input type="text" name="Desde" id="desde">
+
+    <label for="hasta">Hasta: </label><input type="text" name="Hasta" id="hasta"> 
+    </div>
+<br>
+    <button onclick="descarga()">Descarga PDFs Zip</button>
+</body>
+</html>
